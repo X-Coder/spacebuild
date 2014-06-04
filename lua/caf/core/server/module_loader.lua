@@ -1,7 +1,7 @@
-AddCSLuaFile("includes/modules/ArrayList.lua")
-AddCSLuaFile("includes/modules/HashMap.lua")
+AddCSLuaFile("includes/modules/arraylist.lua")
+AddCSLuaFile("includes/modules/hashmap.lua")
 AddCSLuaFile("includes/modules/caf_util.lua")
-AddCSLuaFile("includes/modules/Json.lua")
+AddCSLuaFile("includes/modules/json.lua")
 AddCSLuaFile("includes/modules/cache.lua")
 
 require("ArrayList")

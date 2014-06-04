@@ -221,7 +221,7 @@ hook.Add( "PlayerSpawnedVehicle", "CAF VEHICLE Spawn", SpawnedVehicle )
 	WriteToDebugFile
 	This function will write the selected message to 
 		1) the console
-		2) the specified file into the CAF_DEBUG/Server/ folder
+		2) the specified file into the caf_debug/Server/ folder
 			If the file doesn't exist it will be created
 ]]
 function CAF2.WriteToDebugFile(filename, message)
@@ -229,10 +229,10 @@ function CAF2.WriteToDebugFile(filename, message)
 	if DEBUG then
 		ErrorNoHalt("Filename: "..tostring(filename)..", Message: "..tostring(message).."\n")
 	end
-	local contents = file.Read("CAF_Debug/server/"..filename..".txt")
+	local contents = file.Read("caf_debug/server/"..filename..".txt")
 	contents = contents or "" 
 	contents = contents .. message
-	file.Write("CAF_Debug/server/"..filename..".txt", contents)
+	file.Write("caf_debug/server/"..filename..".txt", contents)
 end
 
 --[[
@@ -242,9 +242,9 @@ end
 ]]
 function CAF2.ClearDebugFile(filename)
 	if not filename then return nil , "Missing Argument" end
-	local contents = file.Read("CAF_Debug/server/"..filename..".txt")
+	local contents = file.Read("caf_debug/server/"..filename..".txt")
 	contents = contents or "" 
-	file.Write("CAF_Debug/server/"..filename..".txt", "")
+	file.Write("caf_debug/server/"..filename..".txt", "")
 	return content
 end
 
@@ -490,7 +490,7 @@ for k, File in ipairs(Files) do
 	end
 end
 
-Files = file.Find("CAF/Core/client/*.lua", "LUA")
+Files = file.Find("caf/core/client/*.lua", "LUA")
 for k, File in ipairs(Files) do
 	Msg("Sending: "..File.."...")
 	local ErrorCheck, PCallError = pcall(AddCSLuaFile, "caf/core/client/"..File)
@@ -501,7 +501,7 @@ for k, File in ipairs(Files) do
 	end
 end
 
-Files = file.Find("CAF/Core/shared/*.lua", "LUA")
+Files = file.Find("caf/core/shared/*.lua", "LUA")
 for k, File in ipairs(Files) do
 	Msg("Sending: "..File.."...")
 	local ErrorCheck, PCallError = pcall(AddCSLuaFile, "caf/core/shared/"..File)
