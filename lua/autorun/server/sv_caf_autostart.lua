@@ -11,6 +11,8 @@ for _, v in pairs(net_pools) do
     util.AddNetworkString(v)
 end
 
+if not file.IsDir( "caf_debug/server", "DATA" ) then file.CreateDir( "caf_debug/server" ) end
+
 -- Variable Declarations
 local CAF2 = {}
 CAF = CAF2;
@@ -221,7 +223,7 @@ hook.Add( "PlayerSpawnedVehicle", "CAF VEHICLE Spawn", SpawnedVehicle )
 	WriteToDebugFile
 	This function will write the selected message to 
 		1) the console
-		2) the specified file into the caf_debug/Server/ folder
+		2) the specified file into the caf_debug/server/ folder
 			If the file doesn't exist it will be created
 ]]
 function CAF2.WriteToDebugFile(filename, message)
@@ -229,10 +231,7 @@ function CAF2.WriteToDebugFile(filename, message)
 	if DEBUG then
 		ErrorNoHalt("Filename: "..tostring(filename)..", Message: "..tostring(message).."\n")
 	end
-	local contents = file.Read("caf_debug/server/"..filename..".txt")
-	contents = contents or "" 
-	contents = contents .. message
-	file.Write("caf_debug/server/"..filename..".txt", contents)
+  file.Append("caf_debug/server/"..filename..".txt", message .. "\n")
 end
 
 --[[

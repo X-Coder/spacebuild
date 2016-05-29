@@ -46,7 +46,7 @@ local function ReadLong()
 end
 
 local function AddEntityToCache( nrofbytes )
-    print("RD_Entity_Data #", nrofbytes, " bytes received")
+    --print("RD_Entity_Data #", nrofbytes, " bytes received")
 	local data = {}
 
 	data.entid = ReadShort() --Key
@@ -74,7 +74,6 @@ end
 net.Receive("RD_Entity_Data", AddEntityToCache)
 
 local function AddNetworkToCache( nrofbytes )
-    print("RD_Network_Data #", nrofbytes, " bytes received")
 	local data = {}
 	
 	data.netid = ReadShort() --network key
@@ -302,7 +301,7 @@ function RD.GetNetworkCapacity(ent, resource)
 	local amount = 0
 	local index=RD.GetEntityTable(ent)
 	if table.Count(index) then
-		if index.resources[resource] then
+		if index.resources and index.resources[resource] then
 			amount = index.resources[resource].maxvalue
 		end
 	end

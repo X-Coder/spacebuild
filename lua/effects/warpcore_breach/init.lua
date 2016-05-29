@@ -2,7 +2,19 @@ local matRefraction	= Material( "refract_ring" )
 
 local tMats = {}
 
-tMats.Glow1 = Material("sprites/light_glow02")
+--tMats.Glow1 = Material("sprites/light_glow02")
+	tMats.Glow1 = StarGate.MaterialFromVMT(
+	"WarpCoreBreach",
+	[["UnLitGeneric"
+	{
+		"$basetexture"		"sprites/light_glow02"
+		"$spriteorientation" "vp_parallel"
+		"$spriteorigin" "[ 0.50 0.50 ]"
+		"$additive" 1
+		"$spriterendermode" 9
+		"$ignorez" 1
+		"$illumfactor" 10
+	}]]);
 --tMats.Glow1 = Material("models/roller/rollermine_glow")
 tMats.Glow2 = Material("sprites/yellowflare")
 tMats.Glow3 = Material("sprites/redglow2")

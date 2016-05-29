@@ -5,6 +5,8 @@ end
 
 local net = net
 
+if not file.IsDir( "caf_debug/client", "DATA" ) then file.CreateDir( "caf_debug/client" ) end
+
 --Variable Declarations
 local CAF2 = {}
 CAF = CAF2;
@@ -131,10 +133,7 @@ function CAF2.WriteToDebugFile(filename, message)
 	if DEBUG then
 		ErrorNoHalt("Filename: "..tostring(filename)..", Message: "..tostring(message).."\n")
 	end
-	local contents = file.Read("caf_debug/client/"..filename..".txt")
-	contents = contents or "" 
-	contents = contents .. message
-	file.Write("caf_debug/client/"..filename..".txt", contents)
+  file.Append("caf_debug/client/"..filename..".txt", message .. "\n")
 end
 
 function CAF2.ClearDebugFile(filename)

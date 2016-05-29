@@ -13,6 +13,15 @@ RESOURCES = {}
 
 if (SERVER) then
     AddCSLuaFile("autorun/resources_api.lua")
+    local meta = FindMetaTable("Entity")  
+    function meta:GetPlayerName()
+      local player = self:GetOwner()
+      if(player and IsValid(player)) then
+        return player:GetName()
+      else
+        return ""
+      end
+    end 
 end
 
 
@@ -27,6 +36,15 @@ if (CLIENT) then
 	function meta:ResourcesDraw(ent)
 
     end
+    
+  function meta:GetPlayerName()
+    local player = self:GetOwner()
+    if(player and IsValid(player)) then
+      return player:GetName()
+    else
+      return ""
+    end
+  end
 end
 
 --Credit really should goto Maddog. I just rewrote these slighty
